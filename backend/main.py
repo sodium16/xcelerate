@@ -1,7 +1,36 @@
-import sys
-import os
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from api.v1 import endpoints
+import uvicorn
 
-# Add the project root to path so we can import from ml_engine
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# Initialize App
+app = FastAPI(
+    title="EduPulse Hackathon API",
+    description="Backend for Student Risk Prediction & AI Agent",
+    version="1.0.0"
+)
 
-from ml_engine.predictor import predict_student_risk  # Import the function directly
+# --- CORS CONFIGURATION ---
+# Critical: Allows your React/Next.js frontend to make requests
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # In production, replace with specific frontend URL
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# --- ROUTER REGISTRATION ---
+app.include_router(endpoints.router, prefix="/api/v1")
+
+# --- HEALTH CHECK ---
+@app.get("/")
+def root():
+    return {
+        "message": "EduPulse API is Online 🚀",
+        "docs_url": "http://localhost:8000/docs"
+    }
+
+# --- RUNNER ---
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
