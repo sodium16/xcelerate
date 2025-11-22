@@ -13,5 +13,218 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <!-- EARL Chatbot root -->
+<div id="earl-chatbot-root"></div>
+
+<script>
+  window.addEventListener("DOMContentLoaded", function () {
+    const root = document.getElementById("earl-chatbot-root");
+    if (!root) return;
+
+    // Styles
+    root.style.position = "fixed";
+    root.style.bottom = "20px";
+    root.style.right = "20px";
+    root.style.zIndex = "9999";
+    root.style.fontFamily = "system-ui, -apple-system, BlinkMacSystemFont, sans-serif";
+
+    // State
+    let isOpen = false;
+    const messages = [
+      { from: "bot", text: "Hi 👋 I’m EARL Assistant. Ask me about risk score, dashboard, ML model, or study plan!" },
+    ];
+
+    // Elements
+    const button = document.createElement("button");
+    button.textContent = "💬 Ask EARL";
+    Object.assign(button.style, {
+      padding: "10px 18px",
+      borderRadius: "999px",
+      border: "none",
+      background: "#2563eb",
+      color: "white",
+      cursor: "pointer",
+      boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+      fontWeight: "600",
+      fontSize: "14px",
+    });
+
+    const panel = document.createElement("div");
+    Object.assign(panel.style, {
+      width: "320px",
+      height: "420px",
+      background: "white",
+      borderRadius: "12px",
+      boxShadow: "0 8px 24px rgba(0,0,0,0.2)",
+      display: "none",
+      flexDirection: "column",
+      overflow: "hidden",
+    });
+
+    // Header
+    const header = document.createElement("div");
+    Object.assign(header.style, {
+      background: "#2563eb",
+      color: "white",
+      padding: "10px",
+      fontWeight: "600",
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      fontSize: "14px",
+    });
+    header.innerHTML = `<span>EARL Assistant</span>`;
+    const closeBtn = document.createElement("button");
+    closeBtn.textContent = "✕";
+    Object.assign(closeBtn.style, {
+      background: "transparent",
+      border: "none",
+      color: "white",
+      cursor: "pointer",
+      fontSize: "16px",
+    });
+    header.appendChild(closeBtn);
+
+    // Messages area
+    const messagesBox = document.createElement("div");
+    Object.assign(messagesBox.style, {
+      flex: "1",
+      padding: "10px",
+      overflowY: "auto",
+      background: "#f9fafb",
+      fontSize: "13px",
+    });
+
+    // Input area
+    const inputRow = document.createElement("div");
+    Object.assign(inputRow.style, {
+      padding: "6px",
+      display: "flex",
+      gap: "6px",
+      borderTop: "1px solid #e5e7eb",
+      background: "white",
+    });
+
+    const input = document.createElement("input");
+    input.type = "text";
+    input.placeholder = "Type your question…";
+    Object.assign(input.style, {
+      flex: "1",
+      padding: "6px 10px",
+      borderRadius: "999px",
+      border: "1px solid #d1d5db",
+      outline: "none",
+      fontSize: "13px",
+    });
+
+    const sendBtn = document.createElement("button");
+    sendBtn.textContent = "➤";
+    Object.assign(sendBtn.style, {
+      padding: "6px 12px",
+      borderRadius: "999px",
+      border: "none",
+      background: "#2563eb",
+      color: "white",
+      cursor: "pointer",
+      fontSize: "13px",
+      fontWeight: "600",
+    });
+
+    inputRow.appendChild(input);
+    inputRow.appendChild(sendBtn);
+
+    panel.appendChild(header);
+    panel.appendChild(messagesBox);
+    panel.appendChild(inputRow);
+
+    root.appendChild(button);
+    root.appendChild(panel);
+
+    // Bot reply logic
+    function getReply(rawMessage) {
+      const msg = rawMessage.toLowerCase();
+      if (msg.includes("hello") || msg.includes("hi")) {
+        return "Hi 👋 I’m EARL Assistant. Ask me anything about risk score, dashboard, ML model, or study plan!";
+      }
+      if (msg.includes("what is earl") || msg.includes("early academic risk locator")) {
+        return "EARL predicts which students are at academic risk early using attendance, CGPA, assignments, and study habits.";
+      }
+      if (msg.includes("risk score")) {
+        return "Risk Score (0–100) shows how likely a student is to face academic difficulty. Higher score = higher risk.";
+      }
+      if (msg.includes("risk label")) {
+        return "Risk Label = Low, Medium, or High. It helps faculty quickly identify students needing support.";
+      }
+      if (msg.includes("how does it work") || msg.includes("model")) {
+        return "EARL uses machine learning with features like attendance rate, CGPA, study hours, failures, etc., to predict risk.";
+      }
+      if (msg.includes("study plan")) {
+        return "The Smart Study Plan gives recommended study hours, weak subjects, and weekly tasks based on risk level.";
+      }
+      if (msg.includes("dashboard")) {
+        return "The dashboard shows total students, high-risk count, domain switcher, and a smart table with actions like Call Now.";
+      }
+      return "I'm not trained for that yet 😅. Try asking about: EARL, risk score, risk label, dashboard, or study plan.";
+    }
+
+    function renderMessages() {
+      messagesBox.innerHTML = "";
+      messages.forEach((m) => {
+        const wrapper = document.createElement("div");
+        wrapper.style.marginBottom = "6px";
+        wrapper.style.textAlign = m.from === "user" ? "right" : "left";
+
+        const bubble = document.createElement("div");
+        bubble.textContent = m.text;
+        Object.assign(bubble.style, {
+          display: "inline-block",
+          padding: "6px 10px",
+          borderRadius: "10px",
+          fontSize: "13px",
+          lineHeight: "1.3",
+          background: m.from === "user" ? "#2563eb" : "white",
+          color: m.from === "user" ? "white" : "#111827",
+        });
+
+        wrapper.appendChild(bubble);
+        messagesBox.appendChild(wrapper);
+      });
+      messagesBox.scrollTop = messagesBox.scrollHeight;
+    }
+
+    function openPanel() {
+      isOpen = true;
+      button.style.display = "none";
+      panel.style.display = "flex";
+      renderMessages();
+    }
+
+    function closePanel() {
+      isOpen = false;
+      panel.style.display = "none";
+      button.style.display = "inline-block";
+    }
+
+    function sendMessage() {
+      const text = input.value.trim();
+      if (!text) return;
+      messages.push({ from: "user", text });
+      messages.push({ from: "bot", text: getReply(text) });
+      input.value = "";
+      renderMessages();
+    }
+
+    button.addEventListener("click", openPanel);
+    closeBtn.addEventListener("click", closePanel);
+    sendBtn.addEventListener("click", sendMessage);
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        sendMessage();
+      }
+    });
+  });
+</script>
+
   </body>
 </html>
