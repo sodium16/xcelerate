@@ -1,0 +1,51 @@
+student_id,name,attendance_rate,cgpa,study_hours_per_day,past_failures,family_income,scholarship,internship_score,case_studies
+STU_4001,Amitabh Bachchan,44.0,4.4,1,3,Low,No,2,5
+STU_4002,Shah Rukh Khan,94.0,9.4,9,0,High,No,9,45
+STU_4003,Salman Khan,71.0,7.0,5,1,Medium,Yes,6,20
+STU_4004,Aamir Khan,39.0,4.0,0,4,Low,No,1,2
+STU_4005,Akshay Kumar,87.0,8.8,8,0,Medium,No,8,40
+STU_4006,Ajay Devgn,65.0,6.4,4,1,High,No,5,15
+STU_4007,Hrithik Roshan,52.0,5.2,2,2,Low,Yes,3,8
+STU_4008,Ranbir Kapoor,96.0,9.6,10,0,Medium,No,10,48
+STU_4009,Ranveer Singh,75.0,7.4,5,0,High,No,7,25
+STU_4010,Shahid Kapoor,46.0,4.6,1,3,Low,No,2,6
+STU_4011,Varun Dhawan,90.0,9.0,7,0,Medium,Yes,9,42
+STU_4012,Sidharth Malhotra,66.0,6.6,4,1,Low,No,5,16
+STU_4013,Kartik Aaryan,92.0,9.2,8,0,High,No,9,44
+STU_4014,Tiger Shroff,54.0,5.4,2,2,Medium,No,3,10
+STU_4015,Ayushmann Khurrana,78.0,7.7,5,0,High,Yes,7,28
+STU_4016,Vicky Kaushal,37.0,3.9,0,4,Low,No,1,3
+STU_4017,Rajkummar Rao,95.0,9.5,9,0,Medium,No,10,46
+STU_4018,Nawazuddin Siddiqui,72.0,7.1,4,1,High,No,6,22
+STU_4019,Pankaj Tripathi,50.0,5.0,1,2,Low,Yes,3,7
+STU_4020,Manoj Bajpayee,89.0,8.9,7,0,Medium,No,8,41
+STU_4021,Irrfan Khan,64.0,6.3,3,1,High,No,5,14
+STU_4022,Naseeruddin Shah,98.0,9.8,10,0,High,No,10,49
+STU_4023,Om Puri,41.0,4.1,1,3,Low,No,2,4
+STU_4024,Anupam Kher,74.0,7.3,4,0,Medium,Yes,6,24
+STU_4025,Paresh Rawal,57.0,5.7,2,2,Low,No,4,11
+STU_4026,Boman Irani,91.0,9.1,8,0,High,No,9,43
+STU_4027,Sanjay Dutt,68.0,6.7,3,1,Medium,No,5,18
+STU_4028,Sunil Shetty,45.0,4.5,1,3,Low,Yes,2,5
+STU_4029,Sunny Deol,93.0,9.3,8,0,High,No,9,45
+STU_4030,Bobby Deol,70.0,7.0,4,0,Medium,No,6,21
+STU_4031,Dharmendra,40.0,4.0,0,4,Low,No,1,2
+STU_4032,Jeetendra,88.0,8.8,7,0,High,Yes,8,40
+STU_4033,Rishi Kapoor,65.0,6.5,3,1,Medium,No,5,15
+STU_4034,Randhir Kapoor,94.5,9.4,9,0,High,No,9,47
+STU_4035,Shammi Kapoor,53.0,5.3,2,2,Low,No,3,9
+STU_4036,Shashi Kapoor,77.0,7.6,5,0,Medium,Yes,7,26
+STU_4037,Raj Kapoor,47.0,4.7,1,3,Low,No,2,6
+STU_4038,Dilip Kumar,86.0,8.7,7,0,High,No,8,39
+STU_4039,Dev Anand,69.0,6.9,3,1,Medium,No,5,19
+STU_4040,Guru Dutt,56.0,5.6,2,2,Low,Yes,4,10
+STU_4041,Kishore Kumar,92.5,9.2,8,0,High,No,9,44
+STU_4042,Mohammed Rafi,73.0,7.2,4,0,Medium,No,6,23
+STU_4043,Mukesh,42.0,4.2,1,3,Low,No,2,4
+STU_4044,Lata Mangeshkar,89.0,8.9,7,0,High,Yes,8,41
+STU_4045,Asha Bhosle,67.0,6.6,3,1,Medium,No,5,17
+STU_4046,Alka Yagnik,97.0,9.7,9,0,High,No,10,48
+STU_4047,Kavita Krishnamurthy,49.0,4.9,1,2,Low,No,3,8
+STU_4048,Shreya Ghoshal,78.0,7.8,5,0,Medium,No,7,27
+STU_4049,Sunidhi Chauhan,55.0,5.5,2,2,Low,Yes,4,9
+STU_4050,Neha Kakkar,90.5,9.0,7,0,High,No,9,42
